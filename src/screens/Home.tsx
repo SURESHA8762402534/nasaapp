@@ -1,5 +1,7 @@
 /** @format */
 
+import { Snackbar } from "@material-ui/core";
+import { Close } from "@material-ui/icons";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import axios from "axios";
@@ -19,6 +21,13 @@ const Home: FC = () => {
   const [text, setText] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
+  const [state, setState] = React.useState<any>({
+    vertical: "center",
+    horizontal: "center",
+  });
+  const { vertical, horizontal, open } = state;
+
+  const action = <Close onClick={() => setError(false)} />;
 
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
@@ -47,7 +56,7 @@ const Home: FC = () => {
     axios
       .get(`https://api.nasa.gov/neo/rest/v1/neo/${id}?api_key=${KEY}`)
       .then((res) => {
-        navigation.navigate("Details", { data: res.data });
+        navigation.navigate("`", { data: res.data });
       })
       .catch(() => {
         setError(true);
@@ -59,6 +68,15 @@ const Home: FC = () => {
 
   return (
     <SafeAreaView testID="home" style={styles.container}>
+      <Snackbar
+        anchorOrigin={{ vertical, horizontal }}
+        open={error}
+        onClose={() => setError(false)}
+        message="Wrong Id"
+        key={vertical + horizontal}
+        action={action}
+        autoHideDuration={2000}
+      />
       <View style={styles.inputcontainer}>
         <TextInput
           testID="input"

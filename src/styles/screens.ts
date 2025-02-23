@@ -21,7 +21,7 @@ export const styles = StyleSheet.create({
 		paddingBottom: 10,
 		borderRadius: 10,
 
-		borderWidth: 1,
+		// borderWidth: 1,
 		borderStyle: 'solid',
 		borderColor: 'black'
 	},
@@ -73,8 +73,8 @@ export const styles = StyleSheet.create({
 
 	},
 	txt: {
-		color: '#3a6599',
-		fontSize: 16,
+		color: '#18315f',
+		fontSize: 18,
 
 	}
 });

@@ -18,7 +18,36 @@ const Details: FC<detailsProp> = (props) => {
   const data = props.route.params.data;
 
   return (
-    <SafeAreaView testID="details" style={styles.container}>
+    <SafeAreaView
+      testID="details"
+      style={{
+        width: "100%",
+        flex: 1,
+        // backgroundColor: "#f6f1eb",
+        padding: 10,
+        // justifyContent: "center",
+        alignItems: "center",
+        marginTop: "10%",
+      }}
+    >
+      <View
+        style={{
+          marginBottom: 30,
+        }}
+      >
+        <Text
+          style={{
+            fontSize: 22,
+            fontWeight: "700",
+            color: "#18315f",
+            textDecorationLine: "underline",
+            textTransform: "uppercase",
+          }}
+        >
+          Asteroid Details
+        </Text>
+      </View>
+
       <View style={styles.card}>
         <Text style={styles.txt}>Name: {data?.name}</Text>
         <Text style={styles.txt}>Nasa JPl URL: {data?.nasa_jpl_url}</Text>
